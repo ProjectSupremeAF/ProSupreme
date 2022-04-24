@@ -1,6 +1,5 @@
 
 Application Framework (SE3040)
-Software Requirement Specification
 
 Research Project Management Tool
 
