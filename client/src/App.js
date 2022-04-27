@@ -1,13 +1,21 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import {Container , AppBar, Typography, Grow, Grid} from '@material-ui/core';
 import Marking from './components/Marking/Marking';
 import FormMarking from './components/Form/FormMarking';
+import {useDispatch} from 'react-redux';
 
+import { getMarking} from './actions/marking';
 import prosupreme from './images/prosupreme.jpg';
 import useStyles from './styles';
 
 const App = () => {
     const classes = useStyles();
+    const dispatch = useDispatch();
+
+    useEffect(() =>{
+        dispatch(getMarking());
+    }, [dispatch]);
+    
     return(
         <Container maxidth = "lg">
             <AppBar className={classes.appBar} position= "static" color="inherit">

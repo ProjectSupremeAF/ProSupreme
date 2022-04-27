@@ -9,11 +9,12 @@ import postRoutes from './routes/marking.js';
 const app = express();
 dotenv.config();
 
-app.use('/marking', postRoutes);
 
 app.use(bodyParser.json({limit: "30mb", extended:true}));
 app.use(bodyParser.urlencoded({limit: "30mb", extended: true}));
 app.use(cors());
+
+app.use('/marking', postRoutes);
 
 //const CONNECTION_URL = 'mongodb+srv://vibhujay99:codelyoko99@cluster0.zibrl.mongodb.net/Cluster0?retryWrites=true&w=majority'
 const PORT = process.env.PORT || 5000;
