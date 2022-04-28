@@ -37,3 +37,15 @@ export const updateMarking = async(req, res) =>{
 
     res.json(updatedMarking);
 }
+
+export const deleteMarking = async (req, res) =>{
+    const { id } = req.params;
+    if(!mongoose.Types.ObjectId.isValid(id)) return res.status(404).send('No marking with that ID');
+
+    await MarkingMessage.findByIdAndRemove(id);
+
+    
+
+    res.json({ message: 'Post deleted successfully'});
+
+}

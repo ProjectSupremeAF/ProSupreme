@@ -3,11 +3,14 @@ import { Card, CardActions, CardContent, CardMedia, Button, Typography} from '@m
 import DeleteIcon from '@material-ui/icons/Delete';
 import MoreHorizIcon from '@material-ui/icons/MoreHoriz';
 import moment from 'moment';
-
 import useStyles from './styles';
+import { useDispatch } from "react-redux";
+
+import { deleteMarking } from "../../../actions/marking";
 
 const Marks = ({marks, setCurrentId}) =>{
     const classes = useStyles();
+    const dispatch = useDispatch();
 
     return(
         <Card className={classes.card}>
@@ -32,7 +35,7 @@ const Marks = ({marks, setCurrentId}) =>{
                 
             </CardContent>
             <CardActions className={classes.cardActions}>
-                <Button size="small" color="primary" onClick={() => {}}>
+                <Button size="small" color="primary" onClick={() => dispatch(deleteMarking(marks._id))}>
                     <DeleteIcon fontSize="small"/>
                     Delete
                 </Button>

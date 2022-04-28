@@ -30,3 +30,13 @@ export const updateMarking = (id, marks) => async (dispatch) =>{
         console.log(error);
     }
 }
+
+export const deleteMarking = (id) => async (dispatch) => {
+    try {
+        await api.deleteMarking(id);
+
+        dispatch({ type: 'DELETE', payload: id});
+    } catch (error) {
+        console.log(error);
+    }
+}
