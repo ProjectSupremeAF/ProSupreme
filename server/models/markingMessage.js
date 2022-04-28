@@ -2,7 +2,7 @@ import mongoose from 'mongoose';
 
 const markingSchema = mongoose.Schema({
     moduleName: String,
-    moduleID: String,
+    moduleID: [String],
     lecinCharge: String,
     attribute1: String,
     attribute2: String,

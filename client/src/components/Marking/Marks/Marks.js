@@ -21,7 +21,9 @@ const Marks = ({marks}) =>{
                     <MoreHorizIcon fontSize="default"/>
                 </Button>
             </div>
-            
+            <div className={classes.details}>
+                <Typography variant="body2" color="textSecondary">{marks.moduleID.map((tag) => `#${tag} `)}</Typography>
+            </div>
             <CardContent>
                 <Typography className={classes.title}  variant="h5" gutterBottom>{marks.moduleID}</Typography>
                 
