@@ -1,11 +1,13 @@
-import React, {useState} from "react";
+import React, {useState, useEffect} from "react";
 import { TextField, Button, Typography, Paper } from '@material-ui/core';
 import FileBase from 'react-file-base64';
 import { useDispatch } from 'react-redux';
+import { useSelector } from "react-redux";
 
 import useStyles from './styles';
-import {createMark} from '../../actions/marking';
-const Form = () =>{
+import {createMark, updateMarking} from '../../actions/marking';
+
+const Form = ( {currentId, setCurrentId}) =>{
 
     const [markingData, setMarkingData] = useState({
         moduleName:'',
@@ -17,24 +19,38 @@ const Form = () =>{
         selectedFile:''
     });
 
+    const marks = useSelector((state) => currentId ? state.marking.find((m)=> m._id === currentId) : null);
+
     const classes = useStyles();
     const dispatch = useDispatch();
+
+    useEffect(() =>{
+        if(marks) setMarkingData(marks);
+
+    }, [marks])
 
     const handleSubmit = (e) => {
         e.preventDefault();
 
-        dispatch(createMark(markingData));
+        if(currentId){
+            dispatch(updateMarking(currentId, markingData));
+        }else{
+            dispatch(createMark(markingData));
+        }
+
+        clear();
 
     }
 
     const clear = () =>{
-
+        setCurrentId(null);
+        setMarkingData({moduleName:'', moduleID:'', lecinCharge:'', attribute1:'', attribute2:'', attribute3:'', selectedFile:''});
     }
 
     return(
         <Paper className = {classes.paper}>
             <form autoComplete="off" noValidate className = {`${classes.root} ${classes.form}`} onSubmit={handleSubmit}>
-                <Typography variant="h6">Creating Marking Scheme</Typography>
+                <Typography variant="h6">{ currentId ? 'Updating' : 'Creating'} Marking Scheme</Typography>
                 <TextField 
                     name="moduleName" 
                     variant="outlined" 

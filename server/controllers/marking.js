@@ -1,3 +1,4 @@
+import mongoose from 'mongoose';
 import MarkingMessage from '../models/markingMessage.js';
 
 
@@ -24,4 +25,15 @@ export const createMarking = async (req, res) =>{
         res.status(409).json({ message: error.message});
     }
 
+}
+
+export const updateMarking = async(req, res) =>{
+    const { id:_id} = req.params;
+    const marking = req.body;
+
+    if(!mongoose.Types.ObjectId.isValid(_id)) return res.status(404).send('No marking with that ID');
+
+    const updatedMarking = await MarkingMessage.findByIdAndUpdate(_id, { ...marking, _id }, {new: true});
+
+    res.json(updatedMarking);
 }

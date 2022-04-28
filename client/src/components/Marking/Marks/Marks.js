@@ -6,18 +6,19 @@ import moment from 'moment';
 
 import useStyles from './styles';
 
-const Marks = ({marks}) =>{
+const Marks = ({marks, setCurrentId}) =>{
     const classes = useStyles();
 
     return(
         <Card className={classes.card}>
             <CardMedia className={classes.media} image={marks.selectedFile} title ={marks.moduleName}/>
             <div className={classes.overlay}>
+                <Typography variant="h6">{marks.moduleName}</Typography>
                 <Typography variant="h6">{marks.lecinCharge}</Typography>
                 <Typography variant="body2">{moment(marks.createdAt).fromNow()}</Typography>
             </div>
             <div className={classes.overlay2}>
-                <Button style={{color: 'white'}} size="small" onClick={() => {}}>
+                <Button style={{color: 'white'}} size="small" onClick={() => setCurrentId(marks._id)}>
                     <MoreHorizIcon fontSize="default"/>
                 </Button>
             </div>
@@ -25,7 +26,9 @@ const Marks = ({marks}) =>{
                 <Typography variant="body2" color="textSecondary">{marks.moduleID.map((tag) => `#${tag} `)}</Typography>
             </div>
             <CardContent>
-                <Typography className={classes.title}  variant="h5" gutterBottom>{marks.moduleID}</Typography>
+                <Typography className={classes.title}  variant="h5" gutterBottom>{marks.attribute1}</Typography>
+                <Typography className={classes.title}  variant="h5" gutterBottom>{marks.attribute2}</Typography>
+                <Typography className={classes.title}  variant="h5" gutterBottom>{marks.attribute3}</Typography>
                 
             </CardContent>
             <CardActions className={classes.cardActions}>

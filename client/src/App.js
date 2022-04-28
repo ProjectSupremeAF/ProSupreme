@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import React, {useState, useEffect} from 'react';
 import {Container , AppBar, Typography, Grow, Grid} from '@material-ui/core';
 import Marking from './components/Marking/Marking';
 import FormMarking from './components/Form/FormMarking';
@@ -9,12 +9,13 @@ import prosupreme from './images/prosupreme.jpg';
 import useStyles from './styles';
 
 const App = () => {
+    const [currentId, setCurrentId] = useState(null);
     const classes = useStyles();
     const dispatch = useDispatch();
 
     useEffect(() =>{
         dispatch(getMarking());
-    }, [dispatch]);
+    }, [currentId, dispatch]);
     
     return(
         <Container maxidth = "lg">
@@ -26,10 +27,10 @@ const App = () => {
                 <Container>
                     <Grid container justify="space-between" alignItems="stretch" spacing={3}>
                         <Grid item xs={12} sm={7}>
-                            <Marking/>
+                            <Marking setCurrentId={setCurrentId}/>
                         </Grid>
                         <Grid item xs={12} sm={4}>
-                            <FormMarking/>
+                            <FormMarking currentId={currentId} setCurrentId={setCurrentId}/>
                         </Grid>
                     </Grid>
                 </Container>

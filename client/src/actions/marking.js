@@ -20,3 +20,13 @@ export const createMark = (mark) => async (dispatch) => {
         console.log(error);
     }
 }
+
+export const updateMarking = (id, marks) => async (dispatch) =>{
+    try {
+        const {data} = await api.updateMarking(id, marks);
+
+        dispatch({ type: 'UPDATE', payload: data});
+    } catch (error) {
+        console.log(error);
+    }
+}
