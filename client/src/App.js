@@ -1,12 +1,14 @@
 import React, {useState, useEffect} from 'react';
-import {Container , AppBar, Typography, Grow, Grid} from '@material-ui/core';
+import {Container ,  Grow, Grid} from '@material-ui/core';
 import Marking from './components/Marking/Marking';
 import FormMarking from './components/Form/FormMarking';
+import NavBar from './components/NavBar/NavBar';
 import {useDispatch} from 'react-redux';
 
 import { getMarking} from './actions/marking';
-import prosupreme from './images/prosupreme.jpg';
+
 import useStyles from './styles';
+
 
 const App = () => {
     const [currentId, setCurrentId] = useState(null);
@@ -19,10 +21,7 @@ const App = () => {
     
     return(
         <Container maxidth = "lg">
-            <AppBar className={classes.appBar} position= "static" color="inherit">
-                <Typography className={classes.heading} variant="h2" align="center">ProjectSupreme</Typography>
-                <img className={classes.image} src = {prosupreme} alt="prosupreme" height="60"/>
-            </AppBar>
+            <NavBar/>
             <Grow in>
                 <Container>
                     <Grid container justify="space-between" alignItems="stretch" spacing={3}>
