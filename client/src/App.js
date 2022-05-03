@@ -1,41 +1,23 @@
-import React, {useState, useEffect} from 'react';
-import {Container ,  Grow, Grid} from '@material-ui/core';
-import Marking from './components/Marking/Marking';
-import FormMarking from './components/Form/FormMarking';
+import React from 'react';
+import {Container } from '@material-ui/core';
+import { BrowserRouter, Switch, Route } from 'react-router-dom';
+
 import NavBar from './components/NavBar/NavBar';
-import {useDispatch} from 'react-redux';
-
-import { getMarking} from './actions/marking';
-
-import useStyles from './styles';
+import HomeAdmin from './components/HomeAdmin/HomeAdmin';
+import Auth from './components/Auth/Auth';
 
 
-const App = () => {
-    const [currentId, setCurrentId] = useState(null);
-    const classes = useStyles();
-    const dispatch = useDispatch();
-
-    useEffect(() =>{
-        dispatch(getMarking());
-    }, [currentId, dispatch]);
-    
-    return(
+const App = () => (
+    <BrowserRouter>
         <Container maxidth = "lg">
-            <NavBar/>
-            <Grow in>
-                <Container>
-                    <Grid container justify="space-between" alignItems="stretch" spacing={3}>
-                        <Grid item xs={12} sm={7}>
-                            <Marking setCurrentId={setCurrentId}/>
-                        </Grid>
-                        <Grid item xs={12} sm={4}>
-                            <FormMarking currentId={currentId} setCurrentId={setCurrentId}/>
-                        </Grid>
-                    </Grid>
-                </Container>
-            </Grow>
+        <NavBar/>
+        <Switch>
+            <Route path="/" exact component={HomeAdmin} />
+            <Route path="/auth" exact component={Auth} />
+        </Switch>    
         </Container>
-    );
-}
+    </BrowserRouter>
+        
+);
 
 export default App;
