@@ -1,13 +1,14 @@
-// eslint-disable-next-line import/no-anonymous-default-export
+import { FETCH_ALL, UPDATE, CREATE, DELETE } from "../constants/actionTypes";
+
 export default (marking = [], action) =>{
     switch (action.type) {
-        case 'DELETE':
+        case DELETE:
             return marking.filter((marks) => marks._id !== action.payload);
-        case 'UPDATE':
+        case UPDATE:
             return marking.map((marks) => marks._id === action.payload._id ? action.payload : marks);
-        case 'FETCH_ALL':
+        case FETCH_ALL:
             return action.payload;
-        case 'CREATE':
+        case CREATE:
             return [...marking, action.payload];
         default:
             return marking;

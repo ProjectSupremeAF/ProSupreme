@@ -1,7 +1,6 @@
 import { combineReducers } from 'redux';
 
 import marking from './marking';
+import auth from './auth';
 
-export default combineReducers({
-    marking
-});
+export const reducers = combineReducers({ marking, auth });
