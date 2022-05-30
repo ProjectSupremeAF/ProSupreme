@@ -1,8 +1,12 @@
 import axios from 'axios';
 
-const url = 'http://localhost:5000/marking';
+const API = axios.create({ baseURL: 'http://localhost:5000'});
 
- export const fetchMarking = () => axios.get(url);
- export const createMark = (newMark) => axios.post(url, newMark);
- export const updateMarking = (id, updatedMarking) => axios.patch(`${url}/${id}`, updatedMarking);
- export const deleteMarking = (id) => axios.delete(`${url}/${id}`);
+
+ export const fetchMarking = () => API.get('/marking');
+ export const createMark = (newMark) => API.post('/marking', newMark);
+ export const updateMarking = (id, updatedMarking) => API.patch(`/marking/${id}`, updatedMarking);
+ export const deleteMarking = (id) => API.delete(`/marking/${id}`);
+
+ export const signIn = (formData) => API.post('/user/signin', formData);
+ export const signUp = (formData) => API.post('/user/signup', formData);
