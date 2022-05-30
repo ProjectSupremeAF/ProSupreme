@@ -1,13 +1,13 @@
 import mongoose from 'mongoose';
 
 const markingSchema = mongoose.Schema({
-    moduleName: String,
+    moduleName: {type: String, required:true},
     moduleID: [String],
-    lecinCharge: String,
-    attribute1: String,
-    attribute2: String,
-    attribute3: String,
-    selectedFile: String,
+    lecinCharge: {type: String, required:true},
+    attribute1: {type: String, required:true},
+    attribute2: {type: String, required:true},
+    attribute3: {type: String, required:true},
+    selectedFile: {type: String, required:true},
     createdAt: {
         type: Date,
         default: new Date()
