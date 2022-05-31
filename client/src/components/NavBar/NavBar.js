@@ -53,11 +53,10 @@ const NavBar = () => {
             </div>
 
           ) : (
-            <Button component={Link} to="/auth" variant="contained" color="primary">Sign In</Button>
-
+            <Button component={Link} to="/auth" variant="contained" color="primary">SignIn Admin</Button>  
           )}
-
         </Toolbar>
+        
                   
       </AppBar>
     );

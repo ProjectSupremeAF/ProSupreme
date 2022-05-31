@@ -1,4 +1,4 @@
-import { FETCH_ALL, CREATE, UPDATE, DELETE } from '../constants/actionTypes';
+import { FETCH_ALL, CREATE, UPDATE, DELETE, FETCH_BY_SEARCH } from '../constants/actionTypes';
 import * as api from '../api';
 
 //Actions
@@ -11,6 +11,16 @@ export const getMarking = () => async (dispatch) => {
         console.log(error.message);
     }
 
+}
+
+export const getMarksBySearch = (searchQuery) => async (dispatch) => {
+    try {
+        const { data: { data} } = await api.fetchMarksBySearch(searchQuery);
+
+        dispatch({ type: FETCH_BY_SEARCH, payload: data});
+    } catch (error) {
+        console.log(error);
+    }
 }
 
 export const createMark = (mark) => async (dispatch) => {

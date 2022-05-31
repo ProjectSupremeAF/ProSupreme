@@ -10,8 +10,10 @@ API.interceptors.request.use((req) =>{
 
     return req;
 });
+ 
 
  export const fetchMarking = () => API.get('/marking');
+ export const fetchMarksBySearch = (searchQuery) => API.get(`/marking/search?searchQuery=${searchQuery.search || 'none'}&tags=${searchQuery.tags}`);
  export const createMark = (newMark) => API.post('/marking', newMark);
  export const updateMarking = (id, updatedMarking) => API.patch(`/marking/${id}`, updatedMarking);
  export const deleteMarking = (id) => API.delete(`/marking/${id}`);

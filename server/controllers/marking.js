@@ -1,5 +1,8 @@
+import express from 'express';
 import mongoose from 'mongoose';
 import MarkingMessage from '../models/markingMessage.js';
+
+const router = express.Router();
 
 
 export const getMarking = async (req, res) =>{
@@ -9,6 +12,22 @@ export const getMarking = async (req, res) =>{
         res.status(200).json(markingMessages);
     }catch(error){
         res.status(404).json({ message: error.message});
+    }
+}
+
+
+
+export const getMarksBySearch = async (req, res) => {
+
+    const { searchQuery, tags} = req.query
+
+    try {
+        const title = new RegExp(searchQuery, "i");
+        const marking = await MarkingMessage.find({ $or: [ { title }, { tags: { $in: tags.split(',') } } ]});
+
+        res.json({ data: marking});
+    } catch (error) {
+        res.status(404).json({ message: error.message });
     }
 }
 
@@ -49,3 +68,5 @@ export const deleteMarking = async (req, res) =>{
     res.json({ message: 'Post deleted successfully'});
 
 }
+
+export default router;
