@@ -18,5 +18,10 @@ API.interceptors.request.use((req) =>{
  export const updateMarking = (id, updatedMarking) => API.patch(`/marking/${id}`, updatedMarking);
  export const deleteMarking = (id) => API.delete(`/marking/${id}`);
 
+ export const fetchSubs = () => API.get('/subs');
+ export const createSub = (newSub) => API.post('/subs', newSub);
+ export const updateSubs = (id, updateSubs) => API.patch(`/subs/${id}`, updateSubs);
+ export const deleteSubs = (id) => API.delete(`/subs/${id}`);
+
  export const signIn = (formData) => API.post('/user/signin', formData);
  export const signUp = (formData) => API.post('/user/signup', formData);

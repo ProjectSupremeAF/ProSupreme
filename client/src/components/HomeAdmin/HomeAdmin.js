@@ -80,7 +80,7 @@ const HomeAdmin = () => {
                 </AppBar>
                     <FormMarking currentId={currentId} setCurrentId={setCurrentId}/>
                     <br></br>
-                    <Button component={Link} to="/subs" variant="contained" color="secondary" fullWidth>Submissions</Button>
+                    <Button component={Link} to="/homesubs" variant="contained" color="secondary" fullWidth>Submissions</Button>
                 </Grid>
                 
             </Grid>
