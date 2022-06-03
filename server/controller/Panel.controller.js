@@ -1,19 +1,19 @@
-const Store = require('../models/Store.models');
+const Panel = require('../models/Panel.models');
 
 //Add Item record
 const addItem = (req,res) =>{
     //const name = req.body.name;
     //const sliitID = req.body.sliitID;
     //destructure
-    const{code, name, category, quentity, type, price} = req.body;
+    const{code, name, group, topic, feedback, presentation} = req.body;
 
-    const newItem = new Store({
+    const newItem = new Panel({
         code,
         name,
-        category,
-        quentity,
-        type,
-        price
+        group,
+        topic,
+        feedback,
+        presentation
     });
 
     newItem.save().then((items)=>{
@@ -26,7 +26,7 @@ const addItem = (req,res) =>{
 
    //Get all Item records
    const getAllItems = (req,res)=>{
-       Store.find().then((items)=>{
+       Panel.find().then((items)=>{
            res.json(items)
      })
      .catch((err)=>{
@@ -37,18 +37,18 @@ const addItem = (req,res) =>{
    //Update an Item
     const updateItem = (async (req,res)=>{
        let userId = req.params.id;
-       const{code, name, category, quentity, type, price} = req.body;
+       const{code, name, group, topic, feedback, presentation} = req.body;
 
        const updateItem = {
-           code,
-           name,
-           category,
-           quentity,
-           type,
-           price
+        code,
+        name,
+        group,
+        topic,
+        feedback,
+        presentation
        }
        
-       const update = await Store.findByIdAndUpdate(userId, updateItem)
+       const update = await Panel.findByIdAndUpdate(userId, updateItem)
        .then((item)=> {
         //console.log("Item updated");
         res.status(200).send({status: "Item Updated", item})
@@ -62,7 +62,7 @@ const addItem = (req,res) =>{
     const deleteItem = (async (req,res) => {
         let userId = req.params.id;
 
-        await Store.findByIdAndDelete(userId)
+        await Panel.findByIdAndDelete(userId)
         .then(() =>{
             res.status(200).send({status: "User deleted"})
         }).catch((err)=>{
@@ -75,7 +75,7 @@ const addItem = (req,res) =>{
     const getOneItem =(async (req,res) => {
         let userId = req.params.id;
 
-        const user = await Store.findById(userId)
+        const user = await Panel.findById(userId)
         .then((item) =>{
             res.status(200).send({status: "User fetched", item});
         }).catch(() => {

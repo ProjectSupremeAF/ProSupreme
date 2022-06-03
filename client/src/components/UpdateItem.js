@@ -8,10 +8,10 @@ class updateItem extends Component {
 
     this.setItemCode = this.setItemCode.bind(this);  //bind user defined function
     this.setItemName = this.setItemName.bind(this);
-    this.setItemCategory = this.setItemCategory.bind(this);
-    this.setItemQuentity = this.setItemQuentity.bind(this);
-    this.setItemType = this.setItemType.bind(this);
-    this.setItemPrice = this.setItemPrice.bind(this);
+    this.setItemGroup = this.setItemGroup.bind(this);
+    this.setItemTopic = this.setItemTopic.bind(this);
+    this.setItemFeedback = this.setItemFeedback.bind(this);
+    this.setItemPresentation = this.setItemPresentation.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
 
 
@@ -19,10 +19,10 @@ class updateItem extends Component {
     this.state={
         code:'',
         name:'',
-        category:'',
-        quentity:'',
-        type:'',
-        price:'',
+        group:'',
+        topic:'',
+        feedback:'',
+        presentation:'',
   };
   }
 
@@ -30,17 +30,17 @@ class updateItem extends Component {
    
    // console.log("Print id: " + this.props.match.params.id);
 
-    axios.get('http://localhost:5000/api/store/get/'+this.props.match.params.id)
+    axios.get('http://localhost:5000/api/panel/get/'+this.props.match.params.id)
       .then((res) => {
          //this.setState({...this.state, block: res.data})
          console.log(res.data)
         this.setState({
           code:res.data.item.code,
           name:res.data.item.name,
-          category:res.data.item.category,
-          quentity:res.data.item.quentity,
-          type:res.data.item.type,
-          price:res.data.item.price,
+          group:res.data.item.group,
+          topic:res.data.item.topic,
+          feedback:res.data.item.feedback,
+          presentation:res.data.item.presentation,
         });
       })
       .catch(err => {
@@ -61,20 +61,20 @@ setItemName(e){
     this.setState({name: e.target.value}); 
 }
 
-setItemCategory(e){
-    this.setState({category: e.target.value});
+setItemGroup(e){
+    this.setState({group: e.target.value});
 }
 
-setItemQuentity(e){
-    this.setState({quentity: e.target.value}); 
+setItemTopic(e){
+    this.setState({topic: e.target.value}); 
 }
 
-setItemType(e){
-    this.setState({type: e.target.value}); 
+setItemFeedback(e){
+    this.setState({feedback: e.target.value}); 
 }
 
-setItemPrice(e){
-    this.setState({price: e.target.value}); 
+setItemPresentation(e){
+    this.setState({presentation: e.target.value}); 
 }
 
 
@@ -84,16 +84,16 @@ setItemPrice(e){
     const editItems = {
       code: this.state.code,
       name: this.state.name,
-      category: this.state.category,
-      quentity: this.state.quentity,
-      type: this.state.type,
-      price: this.state.price,
+      group: this.state.group,
+      topic: this.state.topic,
+      feedback: this.state.feedback,
+      presentation: this.state.presentation,
       
     };
     console.log(editItems);
 
     axios
-      .put('http://localhost:5000/api/store/update/'+this.props.match.params.id, editItems)
+      .put('http://localhost:5000/api/panel/update/'+this.props.match.params.id, editItems)
       .then(res => {
         this.props.history.push('/update/'+this.props.match.params.id);
         alert('Item data updated successfully');
@@ -129,31 +129,31 @@ setItemPrice(e){
   </div>
 
   <div className="mb-3">
-    <label for="category" className="form-label">Project Group ID</label>
-    <input type="text" className="form-control" id="category" placeholder="Enter Project Group ID" 
-   value={this.state.category}
-   onChange={this.setItemCategory} />
+    <label for="group" className="form-label">Project Group ID</label>
+    <input type="text" className="form-control" id="group" placeholder="Enter Project Group ID" 
+   value={this.state.group}
+   onChange={this.setItemGroup} />
   </div>
 
   <div className="mb-3">
-    <label for="quentity" className="form-label">Marks For Topic</label>
-    <input type="number" className="form-control" id="quentity" placeholder="Enter Marks For Topic" 
-  value={this.state.quentity}
-  onChange={this.setItemQuentity} />
+    <label for="topic" className="form-label">Marks For Topic</label>
+    <input type="number" className="form-control" id="topic" placeholder="Enter Marks For Topic" 
+  value={this.state.topic}
+  onChange={this.setItemTopic} />
   </div>
 
   <div className="mb-3">
-    <label for="type" className="form-label">Feedback</label>
-    <input type="text" className="form-control" id="typr" placeholder="Enter Feedback" 
-    value={this.state.type}
-    onChange={this.setItemType} />
+    <label for="feedback" className="form-label">Feedback</label>
+    <input type="text" className="form-control" id="feedback" placeholder="Enter Feedback" 
+    value={this.state.feedback}
+    onChange={this.setItemFeedback} />
   </div>
 
   <div className="mb-3">
-    <label for="price" className="form-label">Marks For Presentation</label>
-    <input type="number" className="form-control" id="price" placeholder="Enter Marks For Presentation" 
-   value={this.state.price}
-   onChange={this.setItemPrice} />
+    <label for="presentation" className="form-label">Marks For Presentation</label>
+    <input type="number" className="form-control" id="presentation" placeholder="Enter Marks For Presentation" 
+   value={this.state.presentation}
+   onChange={this.setItemPresentation} />
   </div>
   
   <button type="submit" className="btn btn-primary">Update</button>

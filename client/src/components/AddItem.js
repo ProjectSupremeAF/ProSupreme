@@ -6,26 +6,26 @@ export default function AddItem(){
 
     const [code, setCode] = useState();
     const [name, setName] = useState("");
-    const [category, setCategory] = useState("");
-    const [quentity, setQuentity] = useState();
-    const [type, setType] = useState("");
-    const [price, setPrice] = useState();
+    const [group, setGroup] = useState("");
+    const [topic, setTopic] = useState();
+    const [feedback, setFeedback] = useState("");
+    const [presentation, setPresentation] = useState();
 
     function sendData(e){
         e.preventDefault();
         //alert("Insert");
 
         const newItem = {
-            code,
-            name,
-            category,
-            quentity,
-            type,
-            price
+          code,
+          name,
+          group,
+          topic,
+          feedback,
+          presentation
         }
         // console.log(newItem);
 
-        axios.post("http://localhost:5000/api/store/add",newItem)
+        axios.post("http://localhost:5000/api/panel/add",newItem)
         .then(() => {
           alert('Item data inserted successfully')
         })
@@ -37,15 +37,21 @@ export default function AddItem(){
 
 
     return(
+
         <div className="container">
              <h3> Add Evaluation </h3>
+
+
             <form onSubmit={sendData}>
+
+
   <div className="mb-3">
     <label for="code" className="form-label">ID</label>
     <input type="number" className="form-control" id="code" placeholder="Enter ID" 
     onChange = {(e) =>{
         setCode(e.target.value);
     }}  />
+   
   </div>
 
   <div className="mb-3">
@@ -54,44 +60,50 @@ export default function AddItem(){
     onChange = {(e) =>{
         setName(e.target.value);
     }}  />
+   
   </div>
 
   <div className="mb-3">
-    <label for="category" className="form-label">Project Group ID</label>
-    <input type="text" className="form-control" id="category" placeholder="Enter Project Group ID" 
+    <label for="group" className="form-label">Project Group ID</label>
+    <input type="text" className="form-control" id="group" placeholder="Enter Project Group ID" 
     onChange = {(e) =>{
-        setCategory(e.target.value);
+        setGroup(e.target.value);
     }}  />
+  
   </div>
 
   <div className="mb-3">
-    <label for="quentity" className="form-label">Marks For Topic</label>
-    <input type="number" className="form-control" id="quentity" placeholder="Enter Marks For Topic" 
+    <label for="topic" className="form-label">Marks For Topic</label>
+    <input type="number" className="form-control" id="topic" placeholder="Enter Marks For Topic" 
     onChange = {(e) =>{
-        setQuentity(e.target.value);
+        setTopic(e.target.value);
     }}  />
+    
   </div>
 
 
   <div className="mb-3">
-    <label for="type" className="form-label">Feedback</label>
-    <input type="text" className="form-control" id="typr"  placeholder="Enter Feedback" 
+    <label for="feedback" className="form-label">Feedback</label>
+    <input type="text" className="form-control" id="feedback"  placeholder="Enter Feedback" aria-describedby="validationServer05Feedback" required
     onChange = {(e) =>{
-        setType(e.target.value);
+        setFeedback(e.target.value);
     }}  />
+    
   </div>
 
   <div className="mb-3">
-    <label for="price" className="form-label">Marks For Presentation</label>
-    <input type="number" className="form-control" id="price" placeholder="Enter Marks For Presentation" 
+    <label for="presentation" className="form-label">Marks For Presentation</label>
+    <input type="number" className="form-control" id="presentation" placeholder="Enter Marks For Presentation" aria-describedby="validationServer06Feedback" required
     onChange = {(e) =>{
-        setPrice(e.target.value);
+        setPresentation(e.target.value);
     }}  />
+    
   </div>
   
   <button type="submit" className="btn btn-primary">Submit</button>
 </form>
         </div>
+        
 
         
     )

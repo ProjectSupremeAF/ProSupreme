@@ -9,7 +9,7 @@ export default function AllItems(){
 
     useEffect(( )=> {
         function getItems() {
-            axios.get("http://localhost:5000/api/store/all")
+            axios.get("http://localhost:5000/api/panel/all")
             .then((res) => {
                 console.log(res.data);
                 setItems(res.data);
@@ -42,10 +42,10 @@ export default function AllItems(){
                              {/*<th scope="row">{index+1}</th>*/}
                              <td>{item.code}</td>
                              <td>{item.name}</td>
-                             <td>{item.category}</td>
-                             <td>{item.quentity}</td>
-                             <td>{item.type}</td>
-                             <td>{item.price}/100</td>
+                             <td>{item.group}</td>
+                             <td>{item.topic}</td>
+                             <td>{item.feedback}</td>
+                             <td>{item.presentation}/100</td>
                              <td>
                              <Link to={`/update/${item._id}`}>
                                  <a className="btn btn-success" >
