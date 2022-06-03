@@ -1,21 +1,36 @@
-import express from 'express';
-import bodyParser from 'body-parser';
-import mongoose from 'mongoose';
-import cors from 'cors';
-import dotenv from 'dotenv';
+const express = require('express');
+const mongoose = require('mongoose');
+const cors = require('cors');
 
-const app = express();
-dotenv.config();
-
-app.use(bodyParser.json({limit: "30mb", extended:true}));
-app.use(bodyParser.urlencoded({limit: "30mb", extended: true}));
+const app = express()
 app.use(cors());
+app.use(express.json())
 
-//const CONNECTION_URL = 'mongodb+srv://vibhujay99:codelyoko99@cluster0.zibrl.mongodb.net/Cluster0?retryWrites=true&w=majority'
 const PORT = process.env.PORT || 5000;
 
-mongoose.connect(process.env.CONNECTION_URL,{ useNewUrlParser: true, useUnifiedTopology: true} )
-.then(() => app.listen(PORT, () => console.log(`Server running on port: ${PORT}`)))
-.catch((error) => console.log(error.message));
 
 
+//const CONNECTION_URL = 'mongodb+srv://vibhujay99:codelyoko99@cluster0.zibrl.mongodb.net/Cluster0?retryWrites=true&w=majority'
+
+mongoose.connect('mongodb+srv://namal:namal123@cluster0.atwy4.mongodb.net/mydatabase?retryWrites=true&w=majority')
+
+//mongoose.connect('mongodb+srv://vibhujay99:codelyoko99@cluster0.zibrl.mongodb.net/panel_Member?retryWrites=true&w=majority')
+
+.then(()=>{
+    console.log("MongoDB connected");
+}).catch((err) => {
+  alert(err.message);
+});
+
+app.get('/', (req, res) =>{
+  res.send("<b> Store Backend API </b>")
+});
+
+//http://localhost:5000/api/store
+app.use("/api/store",require("./routes/Store.routes"));
+
+//cerating port
+app.listen(PORT, () => {
+  console.log(`Server is running on port number:${PORT}`);
+
+});
