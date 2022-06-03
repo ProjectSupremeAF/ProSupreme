@@ -1,32 +1,11 @@
-import Home from './components/Home';
-import UpdateItem from './components/UpdateItem';
-import Header from './components/Header';
-import AddItem from './components/AddItem';
-import DeleteItem from './components/DeleteItem';
-import GetOne from './components/GetOne';
+import React from 'react';
 
-import {BrowserRouter as Router, Route} from "react-router-dom";
-
-   function App() {
-     return (
-       <Router>
-       <div className="App">
-      
-      <h1> Presentation Evaluation </h1>
-
-      
-
-      <Header />
-      
-     <Route path="/add" exact component={AddItem} />
-     <Route path="/" exact component={Home} /> 
-     <Route path="/update/:id" exact component={UpdateItem} />
-     <Route path="/delete/:id" exact component={DeleteItem} /> 
-     <Route path="/one/:id" exact component={GetOne} />
-
-    </div>
-    </Router>
-  );
+const App = () => {
+    return(
+        <div>
+            <h1>App</h1>
+        </div>
+    );
 }
 
 export default App;
