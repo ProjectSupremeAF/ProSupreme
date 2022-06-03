@@ -88,6 +88,8 @@ const HomeAdmin = () => {
                     <br></br>
                     <br></br>
                     <Button component={Link} to="/groups" variant="contained" color="secondary" fullWidth>Panel Groups</Button>
+                    <br></br><br></br>
+                    <Button component={Link} to="/homeusers" variant="contained" color="primary" fullWidth>View Users</Button>
 
                 </Grid>
                 

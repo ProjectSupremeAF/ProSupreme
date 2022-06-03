@@ -17,7 +17,8 @@ const Panel = ({panel, setCurrentId}) => {
         <Card className={classes.card}>
             <CardMedia className={classes.media} image={panel.selectedFile} title ={panel.groupID}/>
             <div className={classes.overlay}>
-                 <Typography className={classes.title}  variant="h5" gutterBottom>{panel.groupID}</Typography>
+                <h1> Group ID</h1>
+                <Typography className={classes.title}  variant="h5" gutterBottom>{panel.groupID}</Typography>
                 <Typography variant="body2">{moment(panel.createdAt).fromNow()}</Typography>
             </div>
             <div className={classes.overlay2}>
@@ -29,6 +30,7 @@ const Panel = ({panel, setCurrentId}) => {
                 <Typography variant="body2" color="textSecondary">{panel.moduleID.map((tag) => `#${tag} `)}</Typography>
             </div>
             <CardContent>
+                <h1> Panel ID</h1>
                 <Typography className={classes.title}  variant="h5" gutterBottom>{panel.panelID}</Typography>
                 
                 

@@ -5,7 +5,7 @@ import SubMessage from '../models/subMessage.js';
 
 const router = express.Router();
 
-export const getSubs = async (req, res) => {
+;export const getSubs = async (req, res) => {
     try {
         const subMessage = await SubMessage.find();
 
@@ -53,4 +53,4 @@ export const deleteSubs = async (req, res) =>{
 }
 
 
-export default router;
+export default router
