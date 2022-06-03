@@ -5,6 +5,7 @@ import { useHistory, useLocation } from 'react-router-dom'
 import ChipInput from 'material-ui-chip-input';
 import { Link } from 'react-router-dom'
 import { getMarking , getMarksBySearch} from '../../actions/marking'
+
 import Marking from '../Marking/Marking'
 import FormMarking from '../Form/FormMarking'
 
@@ -81,6 +82,11 @@ const HomeAdmin = () => {
                     <FormMarking currentId={currentId} setCurrentId={setCurrentId}/>
                     <br></br>
                     <Button component={Link} to="/homesubs" variant="contained" color="secondary" fullWidth>Submissions</Button>
+                    <br></br>
+                    <br></br>
+                    <Button component={Link} to="/hometemps" variant="contained" color="secondary" fullWidth>Templates</Button>
+                    <Button component={Link} to="/groups" variant="contained" color="secondary" fullWidth>Panel Groups</Button>
+
                 </Grid>
                 
             </Grid>

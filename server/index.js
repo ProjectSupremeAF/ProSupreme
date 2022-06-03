@@ -7,6 +7,7 @@ import dotenv from 'dotenv';
 import postRoutes from './routes/marking.js';
 import userRoutes from './routes/users.js';
 import subRoutes from './routes/subs.js';
+import tempRoutes from './routes/temps.js';
 
 const app = express();
 dotenv.config();
@@ -19,6 +20,7 @@ app.use(cors());
 app.use('/marking', postRoutes);
 app.use('/user', userRoutes);
 app.use('/subs', subRoutes);
+app.use('/temps', tempRoutes);
 
 //const CONNECTION_URL = 'mongodb+srv://vibhujay99:codelyoko99@cluster0.zibrl.mongodb.net/Cluster0?retryWrites=true&w=majority'
 const PORT = process.env.PORT || 5000;

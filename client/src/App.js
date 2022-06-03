@@ -7,6 +7,8 @@ import HomeAdmin from './components/HomeAdmin/HomeAdmin';
 import Auth from './components/Auth/Auth';
 import Landing from './components/Landing/Landing';
 import HomeSubs from './components/HomeAdmin/HomeSubs';
+import HomeTemps from './components/HomeAdmin/HomeTemps';
+import HomeGroups from './components/HomeAdmin/HomeGroups';
 
 
 const App = () => (
@@ -18,6 +20,8 @@ const App = () => (
             <Route path="/home" exact component={HomeAdmin} />
             <Route path="/auth" exact component={Auth} />
             <Route path="/homesubs" exact component={HomeSubs} />
+            <Route path="/hometemps" exact component={HomeTemps} />
+            <Route path = "/groups" exact component={HomeGroups} />
         </Switch>    
         </Container>
     </BrowserRouter>
