@@ -10,11 +10,10 @@ const PORT = process.env.PORT || 5000;
 
 
 
-//const CONNECTION_URL = 'mongodb+srv://vibhujay99:codelyoko99@cluster0.zibrl.mongodb.net/Cluster0?retryWrites=true&w=majority'
 
-mongoose.connect('mongodb+srv://namal:namal123@cluster0.atwy4.mongodb.net/mydatabase?retryWrites=true&w=majority')
 
-//mongoose.connect('mongodb+srv://vibhujay99:codelyoko99@cluster0.zibrl.mongodb.net/panel_Member?retryWrites=true&w=majority')
+
+mongoose.connect('mongodb+srv://vibhujay99:codelyoko99@cluster0.zibrl.mongodb.net/panel_Member?retryWrites=true&w=majority')
 
 .then(()=>{
     console.log("MongoDB connected");
