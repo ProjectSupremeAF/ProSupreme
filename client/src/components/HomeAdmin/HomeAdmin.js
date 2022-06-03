@@ -46,9 +46,9 @@ const HomeAdmin = () => {
         }
     };
 
-    const handleAdd = (tag) => setTags([ ...tags, tag]);
+    const handleAddChip = (tag) => setTags([ ...tags, tag]);
 
-    const handleDelete = (tagToDelete) => setTags(tags.filter((tag) => tag !== tagToDelete));
+    const handleDeleteChip = (tagToDelete) => setTags(tags.filter((tag) => tag !== tagToDelete));
 
     return(
         <Grow in>
@@ -63,7 +63,7 @@ const HomeAdmin = () => {
                         name="search"
                         variant="outlined"
                         label="Search"
-                        onKeyPress={handleKeyPress}
+                        onKeyDown={handleKeyPress}
                         fullWidth
                         value={search}
                         onChange={(e) => setSearch(e.target.value)}
@@ -71,8 +71,8 @@ const HomeAdmin = () => {
                     <ChipInput
                      style={{margin: '10px 0'}}
                      value={tags}
-                     onAdd = {handleAdd}
-                     onDelete ={handleDelete}
+                     onAdd={(chip) => handleAddChip(chip)}
+                     onDelete={(chip) => handleDeleteChip(chip)}
                      label = "Search moduleID"
                      variant="outlined"
 
@@ -84,7 +84,9 @@ const HomeAdmin = () => {
                     <Button component={Link} to="/homesubs" variant="contained" color="secondary" fullWidth>Submissions</Button>
                     <br></br>
                     <br></br>
-                    <Button component={Link} to="/hometemps" variant="contained" color="secondary" fullWidth>Templates</Button>
+                    <Button component={Link} to="/hometemps" variant="contained" color="primary" fullWidth>Templates</Button>
+                    <br></br>
+                    <br></br>
                     <Button component={Link} to="/groups" variant="contained" color="secondary" fullWidth>Panel Groups</Button>
 
                 </Grid>

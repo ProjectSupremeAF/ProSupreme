@@ -28,5 +28,10 @@ API.interceptors.request.use((req) =>{
  export const updateTemps = (id, updateTemps) => API.patch(`/temps/${id}`, updateTemps);
  export const deleteTemps = (id) => API.delete(`/temps/${id}`);
 
+ export const fetchPanels = () => API.get('/panels');
+ export const createPanel = (newPanel) => API.post('/panels', newPanel);
+ export const updatePanels = (id, updatePanels) => API.patch(`/panels/${id}`, updatePanels);
+ export const deletePanels = (id) => API.delete(`/panels/${id}`);
+
  export const signIn = (formData) => API.post('/user/signin', formData);
  export const signUp = (formData) => API.post('/user/signup', formData);
