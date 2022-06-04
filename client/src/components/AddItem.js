@@ -39,10 +39,9 @@ export default function AddItem(){
     return(
 
         <div className="container">
+          <form onSubmit={sendData}>
+
              <h3> Add Evaluation </h3>
-
-
-            <form onSubmit={sendData}>
 
 
   <div className="mb-3">
@@ -84,7 +83,7 @@ export default function AddItem(){
 
   <div className="mb-3">
     <label for="feedback" className="form-label">Feedback</label>
-    <input type="text" className="form-control" id="feedback"  placeholder="Enter Feedback" aria-describedby="validationServer05Feedback" required
+    <input type="text" className="form-control" id="feedback"  placeholder="Enter Feedback" 
     onChange = {(e) =>{
         setFeedback(e.target.value);
     }}  />
@@ -93,7 +92,7 @@ export default function AddItem(){
 
   <div className="mb-3">
     <label for="presentation" className="form-label">Marks For Presentation</label>
-    <input type="number" className="form-control" id="presentation" placeholder="Enter Marks For Presentation" aria-describedby="validationServer06Feedback" required
+    <input type="number" className="form-control" id="presentation" placeholder="Enter Marks For Presentation" 
     onChange = {(e) =>{
         setPresentation(e.target.value);
     }}  />

@@ -22,8 +22,8 @@ export default function AllItems(){
 
      return(
          <div className="container">
-             <h3>Marking Table </h3><br/><br/>
-             <table class="table table-bordered">
+             <h3 data-testid="mytesttitle">Marking Table </h3><br/><br/>
+             <table className="table table-bordered">
                  <thead>
                      <tr>
                         {/*<th scope="col">#</th>*/}
