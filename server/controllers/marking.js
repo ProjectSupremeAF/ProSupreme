@@ -15,8 +15,6 @@ export const getMarking = async (req, res) =>{
     }
 }
 
-
-
 export const getMarksBySearch = async (req, res) => {
 
     const { searchQuery, tags} = req.query
